@@ -101,8 +101,10 @@ def create_output_waveguide(c, args, xpos):
     wg_ref.move((xpos, -args.final_width_taper / 2))
 
     # Add ports for connectivity.
-    c.add_port(name="o1", center=(0, 0), width=args.initial_width_taper, orientation=180, layer=(1, 0))
+    c.add_port(name="o1", center=(-(args.initial_period_tip*args.initial_duty_cycle_tip)/2, 0), width=args.initial_y_span_tip, orientation=180, layer=(1, 0))
     c.add_port(name="o2", center=(xpos + args.output_WG_length, 0), width=args.final_width_taper, orientation=0, layer=(1, 0))
+    c = gf.add_pins.add_pins_siepic_optical(c)
+
 
 def main(args):
     """Main function to construct the subwavelength edge coupler."""
@@ -132,8 +134,8 @@ if __name__ == '__main__':
     parser.add_argument('--final_y_span_tip', type=float, default=0.4)
     parser.add_argument('--initial_duty_cycle_tip', type=float, default=0.8)
     parser.add_argument('--final_duty_cycle_tip', type=float, default=0.46)
-    parser.add_argument('--tapering_length_tip', type=float, default=15)
-    parser.add_argument('--span_tip', type=float, default=15)
+    parser.add_argument('--tapering_length_tip', type=float, default=1.55)
+    parser.add_argument('--span_tip', type=float, default=40)
 
     # Taper Section
     parser.add_argument('--initial_period_taper', type=float, default=0.35)
