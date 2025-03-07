@@ -2,6 +2,7 @@
 # the directional coupler takes default arguments passed to it 
 # adjustable parameters include input and output lengths of s bends,
 #   coupling gap, input and output dy offset, and coupling length
+# author: Garen Simpson
 
 import argparse
 import gdsfactory as gf
